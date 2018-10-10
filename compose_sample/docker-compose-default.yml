@@ -1,0 +1,40 @@
+version: '3.5'
+services:
+  webapp:
+    container_name: webapp_first
+    image: webapp:first
+    build:
+      context: ./sample
+      dockerfile: Dockerfile-alternate      
+      args:
+        buildno: 1
+        author: hoojo
+    #cache_from:
+      #- redis:latest
+      #- webapp:first
+    #credential_spec:
+    #  file: my-credential-spec.json
+    #target: prod
+    shm_size: '2gb' 
+	labels:
+      com.hoojo.description: "first webapp"
+      com.hoojo.department: "first"
+      com.hoojo.label-with-empty-value: ""
+    cap_add:
+      - ALL
+    cap_drop:
+      - NET_ADMIN
+      - SYS_ADMIN
+    cgroup_parent: webapp-exector
+    command: echo "hello!"
+    #configs:
+    #  - source: my_config
+    #    target: /redis_config
+    #    uid: '103'
+    #    gid: '103'
+    #    mode: 0440
+  #configs:
+    #my_config:
+      #file: ./my_config.txt
+    #my_other_config:
+      #external: true

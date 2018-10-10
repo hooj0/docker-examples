@@ -1,0 +1,10 @@
+# 依赖的基础 python
+FROM python:3.4-alpine
+# 将当前目录代码添加到 code目录
+ADD . /code
+# 设置当前工作目录 为code
+WORKDIR /code
+# 运行pip 命令 安装依赖
+RUN pip install -r requirements.txt
+# 执行 python app.py
+CMD ["python", "app.py"]

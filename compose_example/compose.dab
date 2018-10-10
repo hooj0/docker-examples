@@ -1,0 +1,23 @@
+{
+  "Services": {
+    "redis": {
+      "Image": "redis@sha256:e6e3a62b67b4e5c956b8814ac64ce3fe531c1093606f2a4fe5492921f6592388",
+      "Networks": [
+        "default"
+      ]
+    },
+    "web": {
+      "Image": "hoojo/test@sha256:1adecad81d64505cba06d071487ef16485d3de18d134d4cdcb308f4f82769409",
+      "Networks": [
+        "default"
+      ],
+      "Ports": [
+        {
+          "Port": 5000,
+          "Protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "Version": "0.1"
+}
